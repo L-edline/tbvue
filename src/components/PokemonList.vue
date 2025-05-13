@@ -13,6 +13,9 @@
 
 <template>
   <img src="@/assets/logo.png" alt="sprite" />
+  <div>
+    <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
+  </div>
   <div class="grid">
     <li
       v-for="pokemon in pokemons"
@@ -27,6 +30,18 @@
 </template>
 
 <style scoped>
+
+div {
+  text-align: center;
+}
+
+.menu {
+  color: black;
+  background-color: rgb(253, 125, 125);
+  border-style: solid;
+  width: fit-content;
+}
+
 img {
   width: 40%;
   margin: auto;

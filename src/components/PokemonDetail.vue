@@ -21,7 +21,7 @@ import { RouterLink } from 'vue-router'
 
   <div class="container" v-if="pokemon">
 
-    <RouterLink class="menu" to="/"> RETURN TO LIST </RouterLink>
+    <RouterLink class="menu" to="/pokedex"> RETURN TO LIST </RouterLink>
     <br>
 
     <br>

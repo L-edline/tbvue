@@ -4,10 +4,11 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <RouterView/>
+    <RouterView/>
 </template>
 
 <style>
+
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -16,6 +17,7 @@ header {
 body {
   background-color:rgb(238, 156, 153);
 }
+
 .logo {
   display: block;
   margin: 0 auto 2rem;

@@ -1,14 +1,40 @@
 <script setup>
-  import PokemonList from '../components/PokemonList.vue'
-  import { useRouter } from 'vue-router'
 
-  const router = useRouter()
-  const goToDetail = (name) => {
-  router.push(`/pokemon/${name}`)
-}
 </script>
 
 <template>
-  <PokemonList @select-pokemon="goToDetail" />
+    <div class="page">
+      <h1>ENCYCLOPEDIE</h1>
+      <div class="menu">
+        <router-link to="/pokedex">
+          <img class="pokedex" src="@/assets/pokedex.png" alt="POKEDEX" />
+        </router-link>
+      </div>
+    </div>
+
 </template>
 
+<style>
+
+  h1 {
+    text-align: center;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: 400px;
+    text-align: center;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .pokedex {
+    width: 50%;
+
+  }
+
+</style>
