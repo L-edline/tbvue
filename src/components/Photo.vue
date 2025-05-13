@@ -20,8 +20,14 @@
     <div>{{ pokemon.name }}</div>
   </div>
   <div v-else>
+    <br>
+    <img class="loading" src="@/assets/loading.png" alt="sprite" />
     Chargement...
   </div>
 </template>
 
-
+<style>
+  .loading {
+    width: 40px;
+  }
+</style>
