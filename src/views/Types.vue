@@ -1,14 +1,13 @@
 <script setup>
-  import PokemonList from '../components/PokemonList.vue'
+  import TypesListe from '../components/TypesListe.vue'
   import { useRouter } from 'vue-router'
 
   const router = useRouter()
   const goToDetail = (name) => {
-    router.push(`/pokemon/${name}`)
+    router.push(`/type/${name}`)
   }
 </script>
 
 <template>
-  <PokemonList @select-pokemon="goToDetail" />
+  <TypesListe @select-type="goToDetail"/>
 </template>
-

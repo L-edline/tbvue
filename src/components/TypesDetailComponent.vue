@@ -1,63 +1,46 @@
 <script setup>
   import {onMounted, ref, watchEffect} from 'vue'
   import { RouterLink } from 'vue-router'
+  import Photo from './Photo.vue'
 
   const {name} = defineProps({
     name: String
   })
 
-  const pokemon = ref(null)
+  const type = ref(null)
 
   watchEffect(async () => {
     if (name) {
-      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-      pokemon.value = await res.json()
+      const res = await fetch(`https://pokeapi.co/api/v2/type/${name}`)
+      type.value = await res.json()
     }
   })
 
 </script>
 
 <template>
-  <div class="container" v-if="pokemon">
+  <div class="container" v-if="type">
 
     <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
-    <RouterLink class="list" to="/pokedex"> RETURN TO LIST </RouterLink>
+    <RouterLink class="list" to="/types"> RETURN TO LIST </RouterLink>
+    <br>
     <br>
 
-    <br>
-    <h2>{{ pokemon.name }}</h2>
-
-    <img class="sprite" :src="pokemon.sprites.front_default" alt="sprite" />
-
-    <ul>
-      <li v-for="type in pokemon.types" :key="type.type.name">
-        <img :src="'/src/assets/types/'+ type.type.name + '.png'" :alt="type.type.name" />
-      </li>
-    </ul>
+    <img class="logo" :src="'/src/assets/types/'+ type.name + '.png'" :alt="type.name" />
 
     <br>
-    <audio controls :src="pokemon.cries.latest" type="audio/ogg"></audio>
-
-    <h3>Abilities</h3>
-    <ul>
-      <li v-for="ability in pokemon.abilities" :key="ability.ability.name">
-        {{ability.ability.name}}
-      </li>
-    </ul>
-
-    <br>
-    <h3>Statistics</h3>
-    <ul class="stats">
-      <li class="stat" v-for="stat in pokemon.stats" :key="stat.stat.name">
-        {{ stat.stat.name }} : {{ stat.base_stat }}
-      </li>
-    </ul>
-
-    <br>
-    <h3>Movepool</h3>
+    <h3>Moves</h3>
     <div class="grid">
-      <div class="card" v-for="move in pokemon.moves" :key="move.move.name">
-        {{ move.move.name }}
+      <div class="card" v-for="move in type.moves" :key="move.name">
+        {{ move.name }}
+      </div>
+    </div>
+
+    <br>
+    <h3>Pokemons</h3>
+    <div class="grid">
+      <div class="card" v-for="pokemon in type.pokemon" :key="pokemon.pokemon.name" @click="$emit('select-pokemon',pokemon.pokemon.name)" style="cursor: pointer">
+        <Photo :name="pokemon.pokemon.name"></Photo>
       </div>
     </div>
 
@@ -81,8 +64,16 @@
   float: left;
 }
 
-.sprite {
-  width: 15%;
+.logo {
+  width: 13%;
+  display:inline-block;
+  padding-left: 35px;
+}
+
+.container {
+  text-align: center;
+  background-color: rgb(239, 184, 118);
+  margin:auto;
 }
 
 .card {
@@ -97,12 +88,6 @@
   gap: 16px;
   padding: 20px;
 
-}
-
-.container {
-  text-align: center;
-  background-color: rgb(239, 184, 118);
-  margin:auto;
 }
 
 .container ul {
@@ -133,4 +118,3 @@ h3 {
   font-weight: bold;
 }
 </style>
-

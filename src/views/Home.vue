@@ -9,12 +9,15 @@
         <router-link to="/pokedex">
           <img class="pokedex" src="@/assets/pokedex.png" alt="POKEDEX" />
         </router-link>
+        <router-link to="/types">
+          <img class="types" src="@/assets/rouetypes.jpg" alt="TYPES" />
+        </router-link>
       </div>
     </div>
 
 </template>
 
-<style>
+<style scoped>
 
   h1 {
     text-align: center;
@@ -34,7 +37,10 @@
 
   .pokedex {
     width: 50%;
+  }
 
+  .types{
+    width: 30%;
   }
 
 </style>

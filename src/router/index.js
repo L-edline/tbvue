@@ -3,6 +3,8 @@ import Home from '../views/Home.vue'
 import TestView from '@/views/TestView.vue'
 import Detail from '@/views/Detail.vue'
 import Pokedex from '@/views/Pokedex.vue'
+import Types from '@/views/Types.vue'
+import TypesDetail from '@/views/TypesDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +37,18 @@ const router = createRouter({
       path: '/pokemon/:name',
       name: 'pokemon',
       component: Detail,
+      props: true,
+    },
+    {
+      path: '/types',
+      name: 'types',
+      component: Types,
+      props: true,
+    },
+    {
+      path: '/type/:name',
+      name: 'type',
+      component: TypesDetail,
       props: true,
     },
   ],
