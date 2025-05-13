@@ -21,7 +21,7 @@
   <div class="container" v-if="pokemon">
     <h2>{{ pokemon.name }}</h2>
     <img :src="pokemon.sprites.front_default" alt="sprite" />
-    <h3>Typing</h3>
+    <h3>Types</h3>
     <ul>
       <li v-for="type in pokemon.types" :key="type.type.name">
         <img :src="'/src/assets/types/'+ type.type.name + '.png'" :alt="type.type.name" />
