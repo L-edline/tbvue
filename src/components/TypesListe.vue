@@ -11,6 +11,7 @@
 </script>
 
 <template>
+
   <img src="@/assets/logo.png" alt="sprite" />
 
   <div>
@@ -28,12 +29,16 @@
       @click="$emit('select-type',type.name)"
       style="cursor: pointer"
     >
-      <img :src="'/src/assets/types/'+ type.name + '.png'" :alt="type.name" />
+      <img class="icon" :src="'/src/assets/types/'+ type.name + '.png'" :alt="type.name" />
     </li>
   </div>
 </template>
 
 <style scoped>
+
+.icon {
+  width: 60%;
+}
 
 h2 {
   text-align: center;
@@ -41,6 +46,7 @@ h2 {
   font-weight: bold;
   font-style: italic;
   font-size:xx-large;
+
 }
 
 div {
@@ -61,12 +67,15 @@ img {
 .grid {
 display: grid;
 grid-template-columns: repeat(6, 1fr);
-gap: 16px;
-padding: 20px;
+gap: 40px;
+padding: 30px;
+margin-bottom: 790px;
+margin-top: 100px;
 }
 
 li {
   list-style-type: none;
+  width: 100%;
 }
 
 </style>

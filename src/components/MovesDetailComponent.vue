@@ -20,9 +20,6 @@
 
 <template>
   <div class="container" v-if="move">
-    <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
-    <RouterLink class="list" to="/moves"> RETURN TO LIST </RouterLink>
-    <br>
 
     <br>
     <h2>{{ move.name }}</h2>
@@ -48,7 +45,13 @@
     </div>
     <div v-else>Accuracy : - </div>
 
-    <!--meta/ailment/flinch/etc...-->
+    <!--meta.ailment_chance % chances of meta.ailment
+        meta.flinch_chance of flinch
+        meta.drain hp drained
+        meta.healing healed
+        other
+
+        if 0, do not show-->
 
     <br>
     <h3>Learned By</h3>

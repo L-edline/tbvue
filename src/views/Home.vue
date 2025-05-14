@@ -1,11 +1,9 @@
 <script setup>
-import Navbar from '@/components/Navbar.vue';
 
 
 </script>
 
 <template>
-  <Navbar></Navbar>
     <div class="page">
       <h1>POKEDEX</h1>
       <router-link to="/pokedex">
@@ -13,13 +11,13 @@ import Navbar from '@/components/Navbar.vue';
       </router-link>
       <div class="menu">
         <router-link to="/types">
-          <h1>TYPES</h1>
+          <h1 class="choix">TYPES</h1>
         </router-link>
         <router-link to="/abilities">
-          <h1>ABILITIES</h1>
+          <h1 class="choix">ABILITIES</h1>
         </router-link>
         <router-link to="/moves">
-          <h1>MOVES</h1>
+          <h1 class="choix">MOVES</h1>
         </router-link>
       </div>
     </div>
@@ -33,6 +31,13 @@ import Navbar from '@/components/Navbar.vue';
     margin-right: 40px;
   }
 
+  .choix {
+    border-style: solid;
+    padding: 5px;
+    background-color: white;
+    border-color: rgb(243, 87, 87);
+  }
+
   h1 {
     text-align: center;
     color: black;
@@ -41,7 +46,7 @@ import Navbar from '@/components/Navbar.vue';
   .page {
     display: flex;
     flex-direction: column;
-    gap: 150px;
+    gap: 100px;
     text-align: center;
   }
 

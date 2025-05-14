@@ -9,6 +9,17 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+.nomtruc {
+  font-family: 'DotGothic16';
+}
+
+h1 {
+  font-family: 'Press Start 2P';
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;

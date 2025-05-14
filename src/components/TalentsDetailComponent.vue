@@ -20,16 +20,15 @@
 
 <template>
   <div class="container" v-if="ability">
-    <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
-    <RouterLink class="list" to="/abilities"> RETURN TO LIST </RouterLink>
-    <br>
 
     <br>
     <h2>{{ ability.name }}</h2>
     <br>
 
     <h3>Effects</h3>
-    <p class="description">{{ ability.effect_entries[1].effect }}</p>
+    <div v-if="ability.effect_entries.length === 0">Pas de description</div>
+    <div v-else-if="ability.effect_entries[0].language.name === 'en'" class="description">{{ ability.effect_entries[0].effect }}</div>
+    <div v-else class="description">{{ ability.effect_entries[1].effect }}</div>
 
     <h3>Pokemons</h3>
     <div class="grid">

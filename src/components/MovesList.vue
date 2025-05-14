@@ -29,7 +29,7 @@
       style="cursor: pointer"
     >
 
-      <p>{{ move.name }}</p>
+      <p class="nomtruc" >{{ move.name }}</p>
 
     </li>
   </div>

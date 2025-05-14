@@ -20,10 +20,6 @@
 <template>
   <div class="container" v-if="pokemon">
 
-    <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
-    <RouterLink class="list" to="/pokedex"> RETURN TO LIST </RouterLink>
-    <br>
-
     <br>
     <h2>{{ pokemon.name }}</h2>
 
@@ -57,7 +53,7 @@
     <h3>Movepool</h3>
     <div class="grid">
       <div class="card" v-for="move in pokemon.moves" :key="move.move.name" @click="$emit('select-move',move.move.name)" style="cursor: pointer">
-        {{ move.move.name }}
+        <p class="nomtruc">{{ move.move.name }}</p>
       </div>
     </div>
 

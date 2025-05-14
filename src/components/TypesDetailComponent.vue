@@ -1,38 +1,85 @@
 <script setup>
-  import {onMounted, ref, watchEffect} from 'vue'
+  import {onMounted, ref, watch, watchEffect} from 'vue'
   import { RouterLink } from 'vue-router'
   import Photo from './Photo.vue'
 
-  const {name} = defineProps({
+  const props = defineProps({
     name: String
   })
 
   const type = ref(null)
 
-  watchEffect(async () => {
-    if (name) {
-      const res = await fetch(`https://pokeapi.co/api/v2/type/${name}`)
-      type.value = await res.json()
-    }
-  })
+  watch(
+    () => props.name,
+    async (newName) => {
+      if (newName)  {
+        type.value = null
+        const res = await fetch(`https://pokeapi.co/api/v2/type/${newName}`)
+        type.value = await res.json()
+      }
+    },
+    { immediate: true}
+  )
 
 </script>
 
 <template>
   <div class="container" v-if="type">
-
-    <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
-    <RouterLink class="list" to="/types"> RETURN TO LIST </RouterLink>
-    <br>
     <br>
 
     <img class="logo" :src="'/src/assets/types/'+ type.name + '.png'" :alt="type.name" />
+
+    <!--damage relations-->
+    <p class="offdef">Offensive Effectiveness</p>
+    <div class="cont">
+      <ul class="liste">
+        <p>Strong against</p>
+        <li v-for="effect in type.damage_relations.double_damage_to" :key="effect.name" @click="$emit('select-type',effect.name)" style="cursor: pointer">
+          <img :src="'/src/assets/types/'+ effect.name + '.png'" :alt="effect.name"/>
+        </li>
+      </ul>
+      <ul class="liste">
+        <p>Weak against</p>
+        <li v-for="effect in type.damage_relations.half_damage_to" :key="effect.name" @click="$emit('select-type',effect.name)" style="cursor: pointer">
+          <img :src="'/src/assets/types/'+ effect.name + '.png'" :alt="effect.name"/>
+        </li>
+      </ul>
+      <ul class="liste">
+        <p>No effect against</p>
+        <li v-for="effect in type.damage_relations.no_damage_to" :key="effect.name" @click="$emit('select-type',effect.name)" style="cursor: pointer">
+          <img :src="'/src/assets/types/'+ effect.name + '.png'" :alt="effect.name"/>
+        </li>
+      </ul>
+    </div>
+
+    <p class="offdef">Defensive Effectiveness</p>
+    <div class="cont">
+      <ul class="liste">
+        <p>Weak to</p>
+        <li v-for="effect in type.damage_relations.double_damage_from" :key="effect.name" @click="$emit('select-type',effect.name)" style="cursor: pointer">
+          <img :src="'/src/assets/types/'+ effect.name + '.png'" :alt="effect.name"/>
+        </li>
+      </ul>
+      <ul class="liste">
+        <p>Resists</p>
+        <li v-for="effect in type.damage_relations.half_damage_from" :key="effect.name" @click="$emit('select-type',effect.name)" style="cursor: pointer">
+          <img :src="'/src/assets/types/'+ effect.name + '.png'" :alt="effect.name"/>
+        </li>
+      </ul>
+      <ul class="liste">
+        <p>Immune to</p>
+        <li v-for="effect in type.damage_relations.no_damage_from" :key="effect.name" @click="$emit('select-type',effect.name)" style="cursor: pointer">
+          <img :src="'/src/assets/types/'+ effect.name + '.png'" :alt="effect.name"/>
+        </li>
+      </ul>
+    </div>
+
 
     <br>
     <h3>Moves</h3>
     <div class="grid">
       <div class="card" v-for="move in type.moves" :key="move.name" @click="$emit('select-move',move.name)" style="cursor: pointer">
-        {{ move.name }}
+        <p class="nomtruc">{{ move.name }}</p>
       </div>
     </div>
 
@@ -49,6 +96,23 @@
 </template>
 
 <style scoped>
+
+.offdef {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family:'Press Start 2P';
+  font-size: smaller;
+}
+
+.cont {
+  display: flex;
+  justify-content: center;
+}
+
+.liste {
+  display: table-cell;
+  border-style: solid;
+}
 
 .list {
   color: black;

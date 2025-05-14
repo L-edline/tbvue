@@ -32,10 +32,10 @@
 
   h1 {
     color: black;
-    font-weight:500;
     border-style: solid;
     padding: 5px ;
-    background-color: rgb(214, 203, 203);
+    background-color: white;
+    border-color: rgb(243, 87, 87);
   }
 
 </style>

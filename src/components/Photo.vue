@@ -17,7 +17,7 @@
 <template>
   <div v-if="pokemon">
     <img :src="pokemon.sprites.front_default" alt="sprite" />
-    <div>{{ pokemon.name }}</div>
+    <div class="nomtruc">{{ pokemon.name }}</div>
   </div>
   <div v-else>
     <br>
