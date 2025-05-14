@@ -7,39 +7,33 @@
     name: String
   })
 
-  const type = ref(null)
+  const ability = ref(null)
 
   watchEffect(async () => {
     if (name) {
-      const res = await fetch(`https://pokeapi.co/api/v2/type/${name}`)
-      type.value = await res.json()
+      const res = await fetch(`https://pokeapi.co/api/v2/ability/${name}`)
+      ability.value = await res.json()
     }
   })
 
 </script>
 
 <template>
-  <div class="container" v-if="type">
-
+  <div class="container" v-if="ability">
     <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
-    <RouterLink class="list" to="/types"> RETURN TO LIST </RouterLink>
-    <br>
+    <RouterLink class="list" to="/abilities"> RETURN TO LIST </RouterLink>
     <br>
 
-    <img class="logo" :src="'/src/assets/types/'+ type.name + '.png'" :alt="type.name" />
-
     <br>
-    <h3>Moves</h3>
-    <div class="grid">
-      <div class="card" v-for="move in type.moves" :key="move.name" @click="$emit('select-move',move.name)" style="cursor: pointer">
-        {{ move.name }}
-      </div>
-    </div>
-
+    <h2>{{ ability.name }}</h2>
     <br>
+
+    <h3>Effects</h3>
+    <p class="description">{{ ability.effect_entries[1].effect }}</p>
+
     <h3>Pokemons</h3>
     <div class="grid">
-      <div class="card" v-for="pokemon in type.pokemon" :key="pokemon.pokemon.name" @click="$emit('select-pokemon',pokemon.pokemon.name)" style="cursor: pointer">
+      <div class="card" v-for="pokemon in ability.pokemon" :key="pokemon.pokemon.name" @click="$emit('select-pokemon',pokemon.pokemon.name)" style="cursor: pointer">
         <Photo :name="pokemon.pokemon.name"></Photo>
       </div>
     </div>
@@ -49,6 +43,12 @@
 </template>
 
 <style scoped>
+
+.description {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-style: italic;
+}
 
 .list {
   color: black;
@@ -64,18 +64,6 @@
   float: left;
 }
 
-.logo {
-  width: 13%;
-  display:inline-block;
-  padding-left: 35px;
-}
-
-.container {
-  text-align: center;
-  background-color: rgb(239, 184, 118);
-  margin:auto;
-}
-
 .card {
   border-style: solid;
   text-transform: capitalize;
@@ -88,6 +76,12 @@
   gap: 16px;
   padding: 20px;
 
+}
+
+.container {
+  text-align: center;
+  background-color: rgb(239, 184, 118);
+  margin:auto;
 }
 
 .container ul {

@@ -7,40 +7,47 @@
     name: String
   })
 
-  const type = ref(null)
+  const move = ref(null)
 
   watchEffect(async () => {
     if (name) {
-      const res = await fetch(`https://pokeapi.co/api/v2/type/${name}`)
-      type.value = await res.json()
+      const res = await fetch(`https://pokeapi.co/api/v2/move/${name}`)
+      move.value = await res.json()
     }
   })
 
 </script>
 
 <template>
-  <div class="container" v-if="type">
-
+  <div class="container" v-if="move">
     <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
-    <RouterLink class="list" to="/types"> RETURN TO LIST </RouterLink>
-    <br>
+    <RouterLink class="list" to="/moves"> RETURN TO LIST </RouterLink>
     <br>
 
-    <img class="logo" :src="'/src/assets/types/'+ type.name + '.png'" :alt="type.name" />
-
     <br>
-    <h3>Moves</h3>
-    <div class="grid">
-      <div class="card" v-for="move in type.moves" :key="move.name" @click="$emit('select-move',move.name)" style="cursor: pointer">
-        {{ move.name }}
-      </div>
+    <h2>{{ move.name }}</h2>
+    <br>
+
+    <div @click="$emit('select-type',move.type.name)" style="cursor: pointer">
+      <img class="type" :src="'/src/assets/types/'+  move.type.name  + '.png'" :alt="move.type.name"/>
     </div>
 
+    <p class="description">{{ move.effect_entries[0].effect }}</p>
+
+    <div v-if="move.power">
+      <p>Power : {{ move.power }}</p>
+    </div>
+    <div v-else>Power : - </div>
+    <div v-if="move.accuracy">
+      <p>Accuracy : {{ move.accuracy }}</p>
+    </div>
+    <div v-else>Accuracy : - </div>
+
     <br>
-    <h3>Pokemons</h3>
+    <h3>Learned By</h3>
     <div class="grid">
-      <div class="card" v-for="pokemon in type.pokemon" :key="pokemon.pokemon.name" @click="$emit('select-pokemon',pokemon.pokemon.name)" style="cursor: pointer">
-        <Photo :name="pokemon.pokemon.name"></Photo>
+      <div class="card" v-for="pokemon in move.learned_by_pokemon" :key="pokemon.name" @click="$emit('select-pokemon',pokemon.name)" style="cursor: pointer">
+        <Photo :name="pokemon.name"></Photo>
       </div>
     </div>
 
@@ -49,6 +56,16 @@
 </template>
 
 <style scoped>
+
+.type {
+  width: 6%;
+}
+
+.description {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-style: italic;
+}
 
 .list {
   color: black;
@@ -64,18 +81,6 @@
   float: left;
 }
 
-.logo {
-  width: 13%;
-  display:inline-block;
-  padding-left: 35px;
-}
-
-.container {
-  text-align: center;
-  background-color: rgb(239, 184, 118);
-  margin:auto;
-}
-
 .card {
   border-style: solid;
   text-transform: capitalize;
@@ -88,6 +93,12 @@
   gap: 16px;
   padding: 20px;
 
+}
+
+.container {
+  text-align: center;
+  background-color: rgb(239, 184, 118);
+  margin:auto;
 }
 
 .container ul {

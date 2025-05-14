@@ -30,8 +30,8 @@
     <img class="sprite" :src="pokemon.sprites.front_default" alt="sprite" />
 
     <ul>
-      <li v-for="type in pokemon.types" :key="type.type.name">
-        <img :src="'/src/assets/types/'+ type.type.name + '.png'" :alt="type.type.name" />
+      <li v-for="type in pokemon.types" :key="type.type.name" @click="$emit('select-type',type.type.name)" style="cursor: pointer">
+        <img :src="'/src/assets/types/'+ type.type.name + '.png'" :alt="type.type.name"/>
       </li>
     </ul>
 
@@ -40,7 +40,7 @@
 
     <h3>Abilities</h3>
     <ul>
-      <li v-for="ability in pokemon.abilities" :key="ability.ability.name">
+      <li v-for="ability in pokemon.abilities" :key="ability.ability.name" @click="$emit('select-ability',ability.ability.name)" style="cursor: pointer">
         {{ability.ability.name}}
       </li>
     </ul>
@@ -56,7 +56,7 @@
     <br>
     <h3>Movepool</h3>
     <div class="grid">
-      <div class="card" v-for="move in pokemon.moves" :key="move.move.name">
+      <div class="card" v-for="move in pokemon.moves" :key="move.move.name" @click="$emit('select-move',move.move.name)" style="cursor: pointer">
         {{ move.move.name }}
       </div>
     </div>

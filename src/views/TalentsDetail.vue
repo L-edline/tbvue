@@ -1,5 +1,5 @@
 <script setup>
-  import TypesDetailComponent from '@/components/TypesDetailComponent.vue';
+  import TalentsDetailComponent from '../components/TalentsDetailComponent.vue'
   import { useRouter } from 'vue-router'
 
   const router = useRouter()
@@ -11,13 +11,10 @@
 
   const goToDetail = (name) => {
     router.push(`/pokemon/${name}`)
-  }
-
-  const goToDetailMove = (name) => {
-    router.push(`/move/${name}`)
+    console.log('goToDetail')
   }
 </script>
 
 <template>
-  <TypesDetailComponent :name="name" @select-pokemon="goToDetail" @select-move="goToDetailMove"/>
+  <TalentsDetailComponent :name="name" @select-pokemon="goToDetail"/>
 </template>

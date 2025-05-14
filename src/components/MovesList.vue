@@ -1,12 +1,12 @@
 <script setup>
   import {ref, onMounted} from 'vue'
 
-  const types = ref([])
+  const moves = ref([])
 
   onMounted(async () => {
-    const res = await fetch(`https://pokeapi.co/api/v2/type?limit=18`)
+    const res = await fetch(`https://pokeapi.co/api/v2/move?limit=367`)
     const data = await res.json()
-    types.value = data.results
+    moves.value = data.results
   })
 </script>
 
@@ -18,17 +18,19 @@
   </div>
 
   <br>
-    <h2>TYPES</h2>
+    <h2>MOVES</h2>
   <br>
 
   <div class="grid">
     <li
-      v-for="type in types"
-      :key="type.name"
-      @click="$emit('select-type',type.name)"
+      v-for="move in moves"
+      :key="move.name"
+      @click="$emit('select-move',move.name)"
       style="cursor: pointer"
     >
-      <img :src="'/src/assets/types/'+ type.name + '.png'" :alt="type.name" />
+
+      <p>{{ move.name }}</p>
+
     </li>
   </div>
 </template>
@@ -60,13 +62,18 @@ img {
 }
 .grid {
 display: grid;
-grid-template-columns: repeat(6, 1fr);
-gap: 16px;
+grid-template-columns: repeat(6,1fr);
+gap: 50px;
 padding: 20px;
 }
 
 li {
+  text-transform: capitalize;
   list-style-type: none;
+  text-align: center;
+  border: 10px;
+  border-style: solid;
+  border-color: rgb(98, 93, 89);
+  background-color: rgb(173, 171, 170);
 }
-
 </style>
