@@ -1,4 +1,5 @@
 <script setup>
+  import Navbar from '@/components/Navbar.vue'
   import PokemonList from '../components/PokemonList.vue'
   import { useRouter } from 'vue-router'
 
@@ -9,6 +10,7 @@
 </script>
 
 <template>
+  <Navbar></Navbar>
   <PokemonList @select-pokemon="goToDetail" />
 </template>
 

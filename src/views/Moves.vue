@@ -1,4 +1,5 @@
 <script setup>
+  import Navbar from '@/components/Navbar.vue'
   import MovesList from '../components/MovesList.vue'
   import { useRouter } from 'vue-router'
 
@@ -9,5 +10,6 @@
 </script>
 
 <template>
+  <Navbar></Navbar>
   <MovesList @select-move="goToDetail" />
 </template>

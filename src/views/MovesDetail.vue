@@ -1,6 +1,7 @@
 <script setup>
   import MovesDetailComponent from '@/components/MovesDetailComponent.vue'
   import { useRouter } from 'vue-router'
+  import Navbar from '@/components/Navbar.vue'
 
   const router = useRouter()
   const props = defineProps({
@@ -19,5 +20,6 @@
 </script>
 
 <template>
+  <Navbar></Navbar>
   <MovesDetailComponent :name="name" @select-pokemon="goToDetail" @select-type="goToDetailType"/>
 </template>

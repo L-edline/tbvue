@@ -1,5 +1,6 @@
 <script setup>
   import TypesListe from '../components/TypesListe.vue'
+  import Navbar from '@/components/Navbar.vue'
   import { useRouter } from 'vue-router'
 
   const router = useRouter()
@@ -9,5 +10,6 @@
 </script>
 
 <template>
+  <Navbar></Navbar>
   <TypesListe @select-type="goToDetail"/>
 </template>

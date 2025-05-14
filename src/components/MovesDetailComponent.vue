@@ -34,6 +34,11 @@
 
     <p class="description">{{ move.effect_entries[0].effect }}</p>
 
+    <div>
+      <p>Category :&nbsp;
+        <img class="categorie" :src="'/src/assets/'+  move.damage_class.name  + '.png'" :alt="move.damage_class.name"/>
+      </p>
+    </div>
     <div v-if="move.power">
       <p>Power : {{ move.power }}</p>
     </div>
@@ -42,6 +47,8 @@
       <p>Accuracy : {{ move.accuracy }}</p>
     </div>
     <div v-else>Accuracy : - </div>
+
+    <!--meta/ailment/flinch/etc...-->
 
     <br>
     <h3>Learned By</h3>
@@ -56,6 +63,11 @@
 </template>
 
 <style scoped>
+
+.categorie {
+  width: 3%;
+   vertical-align:-5%;
+}
 
 .type {
   width: 6%;

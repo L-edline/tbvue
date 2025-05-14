@@ -1,6 +1,7 @@
 <script setup>
   import TalentsDetailComponent from '../components/TalentsDetailComponent.vue'
   import { useRouter } from 'vue-router'
+  import Navbar from '@/components/Navbar.vue'
 
   const router = useRouter()
   const props = defineProps({
@@ -16,5 +17,6 @@
 </script>
 
 <template>
+  <Navbar></Navbar>
   <TalentsDetailComponent :name="name" @select-pokemon="goToDetail"/>
 </template>

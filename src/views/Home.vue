@@ -1,10 +1,13 @@
 <script setup>
+import Navbar from '@/components/Navbar.vue';
+
 
 </script>
 
 <template>
+  <Navbar></Navbar>
     <div class="page">
-      <h1>ENCYCLOPEDIE</h1>
+      <h1>POKEDEX</h1>
       <router-link to="/pokedex">
           <img class="pokedex" src="@/assets/pokedex.png" alt="POKEDEX" />
       </router-link>

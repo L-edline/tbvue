@@ -1,5 +1,6 @@
 <script setup>
   import TalentsListe from '../components/TalentsListe.vue'
+  import Navbar from '@/components/Navbar.vue'
   import { useRouter } from 'vue-router'
 
   const router = useRouter()
@@ -9,5 +10,6 @@
 </script>
 
 <template>
+  <Navbar></Navbar>
   <TalentsListe @select-ability="goToDetail" />
 </template>
