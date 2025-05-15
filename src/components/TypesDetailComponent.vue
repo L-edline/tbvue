@@ -76,7 +76,7 @@
 
     <br>
     <h3>Moves</h3>
-    <div class="grid">
+    <div class="flexgrid">
       <div class="card" v-for="move in type.moves" :key="move.name" @click="$emit('select-move',move.name)" style="cursor: pointer">
         <p class="nomtruc">{{ move.name }}</p>
       </div>
@@ -85,7 +85,7 @@
     <br>
     <h3>Pokemons</h3>
     <div class="grid">
-      <div class="card" v-for="pokemon in type.pokemon" :key="pokemon.pokemon.name" @click="$emit('select-pokemon',pokemon.pokemon.name)" style="cursor: pointer">
+      <div class="pokemoncard" v-for="pokemon in type.pokemon" :key="pokemon.pokemon.name" @click="$emit('select-pokemon',pokemon.pokemon.name)" style="cursor: pointer">
         <Photo :name="pokemon.pokemon.name"></Photo>
       </div>
     </div>
@@ -113,20 +113,6 @@
   border-style: solid;
 }
 
-.list {
-  color: black;
-  background-color: rgb(253, 125, 125);
-  border-style: solid;
-  float: right;
-}
-
-.menu {
-  color: black;
-  background-color: rgb(253, 125, 125);
-  border-style: solid;
-  float: left;
-}
-
 .logo {
   width: 13%;
   display:inline-block;
@@ -143,6 +129,13 @@
   border-style: solid;
   text-transform: capitalize;
   background-color: white;
+  margin: 5px;
+}
+
+.pokemoncard {
+  border-style: solid;
+  text-transform: capitalize;
+  background-color: rgb(247, 198, 139);
 }
 
 .grid {

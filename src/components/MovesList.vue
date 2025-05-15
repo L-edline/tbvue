@@ -1,11 +1,12 @@
 <script setup>
-  import {ref, onMounted, computed} from 'vue'
+  import { browser } from 'globals';
+import {ref, onMounted, computed} from 'vue'
 
   const moves = ref([])
   const input = ref("");
 
   onMounted(async () => {
-    const res = await fetch(`https://pokeapi.co/api/v2/move?limit=367`)
+    const res = await fetch(`https://pokeapi.co/api/v2/move?limit=937`)
     const data = await res.json()
     moves.value = data.results
   })
@@ -24,7 +25,9 @@
     <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
   </div>
 
-  <input class="input" type="text" v-model="input" placeholder="Search moves..." />
+  <div>
+    <input class="input" type="text" v-model="input" placeholder="Search moves..." />
+  </div>
 
   <br>
     <h2>MOVES</h2>

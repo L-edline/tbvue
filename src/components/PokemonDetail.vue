@@ -36,27 +36,27 @@
     <audio controls :src="pokemon.cries.latest" type="audio/ogg"></audio>
 
     <h3>Abilities</h3>
-    <ul>
-      <li v-for="ability in pokemon.abilities" :key="ability.ability.name" @click="$emit('select-ability',ability.ability.name)" style="cursor: pointer">
+    <div class="flex">
+      <div class="card" id="talent" v-for="ability in pokemon.abilities" :key="ability.ability.name" @click="$emit('select-ability',ability.ability.name)" style="cursor: pointer">
         <p id="nomTalent" class="nomtruc">{{ability.ability.name}}</p>
-      </li>
-    </ul>
+      </div>
+    </div>
 
     <br>
     <h3>Statistics</h3>
-    <ul class="stats">
-      <li class="stat" v-for="stat in pokemon.stats" :key="stat.stat.name">
-        {{ stat.stat.name }} : {{ stat.base_stat }}
-      </li>
-    </ul>
+    <div class="stats">
+      <div class="ligne" v-for="stat in pokemon.stats" :key="stat.stat.name">
+        <p class="stat">{{ stat.stat.name }} : {{ stat.base_stat }} </p>
+      </div>
+    </div>
 
   <!-- Simulateur Faiblesses/Résistances, ou boutton vers simulateur -->
 
     <br>
     <h3>Movepool</h3>
-    <div class="grid">
+    <div class="flexgrid">
       <div class="card" v-for="move in pokemon.moves" :key="move.move.name" @click="$emit('select-move',move.move.name)" style="cursor: pointer">
-        <p class="nomtruc">{{ move.move.name }}</p>
+        <p class="nomtruc" id="truc">{{ move.move.name }}</p>
       </div>
     </div>
 
@@ -68,10 +68,36 @@
 
 <style scoped>
 
+.ligne {
+  display: flex;
+  justify-content: center;
+}
+
+.stat {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 2px;
+  border-style: solid;
+  background-color: white;
+  border-radius: 5px;
+  text-transform: capitalize;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+#talent {
+  background-color: rgb(239, 184, 118);;
+  border-style: none;
+  flex: auto auto auto;
+}
+
 #nomTalent {
   border-style: solid;
   margin-top: 5px;
-  border-radius: 30px;
+  border-radius: 15px;
   background-color: white;
 }
 
@@ -97,6 +123,8 @@
   border-style: solid;
   text-transform: capitalize;
   background-color: white;
+  margin: 5px;
+
 }
 
 .grid {

@@ -14,6 +14,13 @@ import HelloWorld from './components/HelloWorld.vue'
 
 .nomtruc {
   font-family: 'DotGothic16';
+  padding: 5px;
+}
+
+.flexgrid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 h1 {

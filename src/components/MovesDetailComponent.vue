@@ -29,7 +29,8 @@
       <img class="type" :src="'/src/assets/types/'+  move.type.name  + '.png'" :alt="move.type.name"/>
     </div>
 
-    <p class="description">{{ move.effect_entries[0].effect }}</p>
+    <div v-if="move.effect_entries.length === 0" class="description">{{ move.flavor_text_entries[0].effect }}</div>
+    <div v-else class="description"> {{ move.effect_entries[0].effect }}</div>
 
     <div>
       <p>Category :&nbsp;
@@ -44,6 +45,10 @@
       <p>Accuracy : {{ move.accuracy }}</p>
     </div>
     <div v-else>Accuracy : - </div>
+
+    <div v-if="move.priority >= 1">
+      <p>This move always goes first</p>
+    </div>
 
     <!--meta.ailment_chance % chances of meta.ailment
         meta.flinch_chance of flinch

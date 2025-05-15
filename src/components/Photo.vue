@@ -28,7 +28,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 
   .loading {
     width: 40px;

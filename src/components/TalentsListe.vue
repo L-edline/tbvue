@@ -24,7 +24,9 @@
     <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
   </div>
 
-  <input class="input" type="text" v-model="input" placeholder="Search abilities..." />
+  <div>
+    <input class="input" type="text" v-model="input" placeholder="Search abilities..." />
+  </div>
 
   <br>
     <h2>ABILITIES</h2>
@@ -77,10 +79,10 @@ img {
   margin-top: 15px;
 }
 .grid {
-display: grid;
-grid-template-columns: repeat(6,1fr);
-gap: 50px;
-padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  gap: 50px;
+  padding: 20px;
 }
 
 li {

@@ -24,6 +24,9 @@
   <div>
     <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
 
+    <br>
+    <input class="input" type="text" v-model="input" placeholder="Search pokemons..." />
+
     <div class="grid">
       <li
         v-for="pokemon in filteredPokemons"
@@ -39,7 +42,7 @@
 
   </div>
 
-  <input class="input" type="text" v-model="input" placeholder="Search pokemons..." />
+
 
 
 </template>
@@ -49,7 +52,7 @@
 .input{
   width: 30%;
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
 div {
