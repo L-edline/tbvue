@@ -26,7 +26,8 @@ header {
 }
 
 body {
-  background-color:rgb(238, 156, 153);
+  background-color:rgb(245, 165, 165);
+  background-image: url(@/assets/grid.png);
 }
 
 .logo {

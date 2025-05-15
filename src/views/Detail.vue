@@ -25,7 +25,7 @@
 </script>
 
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <PokemonDetail :name="name" @select-type="goToDetail" @select-ability="goToDetailAbility" @select-move="goToDetailMove"/>
 </template>
 

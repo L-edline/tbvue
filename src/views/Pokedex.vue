@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <PokemonList @select-pokemon="goToDetail" />
 </template>
 

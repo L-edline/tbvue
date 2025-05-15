@@ -21,7 +21,7 @@
   </div>
   <div v-else>
     <br>
-    <img class="loading" src="@/assets/loading.png" alt="sprite" />
+    <!--<img class="loading" src="@/assets/loading.png" alt="sprite" />-->
     Chargement...
   </div>
 </template>

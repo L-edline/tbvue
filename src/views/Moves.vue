@@ -10,6 +10,6 @@
 </script>
 
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <MovesList @select-move="goToDetail" />
 </template>

@@ -20,6 +20,6 @@
 </script>
 
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <MovesDetailComponent :name="name" @select-pokemon="goToDetail" @select-type="goToDetailType"/>
 </template>

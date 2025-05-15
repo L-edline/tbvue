@@ -10,6 +10,6 @@
 </script>
 
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <TypesListe @select-type="goToDetail"/>
 </template>

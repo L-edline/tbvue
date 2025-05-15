@@ -1,13 +1,20 @@
 <script setup>
-  import {ref, onMounted} from 'vue'
+  import {ref, onMounted, computed} from 'vue'
 
   const abilities = ref([])
+  const input = ref("");
 
   onMounted(async () => {
     const res = await fetch(`https://pokeapi.co/api/v2/ability?limit=367`)
     const data = await res.json()
     abilities.value = data.results
   })
+
+  const filteredAbilities = computed(() =>
+    abilities.value.filter(ability =>
+      ability.name.toLowerCase().includes(input.value.toLowerCase())
+    )
+  )
 </script>
 
 <template>
@@ -17,13 +24,15 @@
     <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
   </div>
 
+  <input class="input" type="text" v-model="input" placeholder="Search abilities..." />
+
   <br>
     <h2>ABILITIES</h2>
   <br>
 
   <div class="grid">
     <li
-      v-for="ability in abilities"
+      v-for="ability in filteredAbilities"
       :key="ability.name"
       @click="$emit('select-ability',ability.name)"
       style="cursor: pointer"
@@ -36,6 +45,12 @@
 </template>
 
 <style scoped>
+
+.input{
+  width: 30%;
+  margin-top: 10px;
+  margin-left: 20px;
+}
 
 h2 {
   text-align: center;
@@ -59,6 +74,7 @@ div {
 img {
   width: 40%;
   margin: auto;
+  margin-top: 15px;
 }
 .grid {
 display: grid;
@@ -74,6 +90,6 @@ li {
   border: 10px;
   border-style: solid;
   border-color: rgb(98, 93, 89);
-  background-color: rgb(173, 171, 170);
+  background-color: whitesmoke;
 }
 </style>

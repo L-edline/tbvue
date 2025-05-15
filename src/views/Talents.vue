@@ -10,6 +10,6 @@
 </script>
 
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <TalentsListe @select-ability="goToDetail" />
 </template>

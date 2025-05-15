@@ -12,7 +12,7 @@
 
 <template>
 
-  <img src="@/assets/logo.png" alt="sprite" />
+  <img id="logo" src="@/assets/logo.png" alt="sprite" />
 
   <div>
     <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
@@ -35,6 +35,10 @@
 </template>
 
 <style scoped>
+
+#logo {
+  margin-top: 15px;
+}
 
 .icon {
   width: 60%;

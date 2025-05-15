@@ -1,14 +1,22 @@
 <script setup>
-  import {ref, onMounted} from 'vue'
+  import {ref, onMounted, computed} from 'vue'
   import Photo from './Photo.vue'
 
   const pokemons = ref([])
+  const input = ref("");
 
   onMounted(async () => {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1302`)
     const data = await res.json()
     pokemons.value = data.results
   })
+
+  const filteredPokemons = computed(() =>
+    pokemons.value.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(input.value.toLowerCase())
+    )
+  )
+
 </script>
 
 <template>
@@ -16,9 +24,12 @@
   <div>
     <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
   </div>
+
+  <input class="input" type="text" v-model="input" placeholder="Search pokemons..." />
+
   <div class="grid">
     <li
-      v-for="pokemon in pokemons"
+      v-for="pokemon in filteredPokemons"
       :key="pokemon.name"
       @click="$emit('select-pokemon',pokemon.name)"
       style="cursor: pointer"
@@ -30,6 +41,12 @@
 </template>
 
 <style scoped>
+
+.input{
+  width: 30%;
+  margin-top: 10px;
+  margin-left: 20px;
+}
 
 div {
   text-align: center;
@@ -45,6 +62,7 @@ div {
 img {
   width: 40%;
   margin: auto;
+  margin-top: 15px;
 }
 .grid {
 display: grid;
@@ -60,7 +78,7 @@ li {
   border: 10px;
   border-style: solid;
   border-color: rgb(240, 90, 90);
-  background-color: white;
+  background-color: whitesmoke;
 }
 </style>
 <!--Faire un nouveau composant-->

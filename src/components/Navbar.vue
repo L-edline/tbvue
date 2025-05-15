@@ -27,7 +27,8 @@
     display: flex;
     flex-direction: row;
     justify-content:space-around;
-    background-color: rgb(177, 169, 169);
+    background-color: rgb(252, 153, 153);
+    padding: 10px;
   }
 
   h1 {

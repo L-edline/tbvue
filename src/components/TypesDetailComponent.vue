@@ -74,7 +74,6 @@
       </ul>
     </div>
 
-
     <br>
     <h3>Moves</h3>
     <div class="grid">

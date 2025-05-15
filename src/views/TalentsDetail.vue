@@ -17,6 +17,6 @@
 </script>
 
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <TalentsDetailComponent :name="name" @select-pokemon="goToDetail"/>
 </template>
