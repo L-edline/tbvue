@@ -24,6 +24,7 @@
     <h2>{{ pokemon.name }}</h2>
 
     <img class="sprite" :src="pokemon.sprites.front_default" alt="sprite" />
+    <!-- other.showdown. -->
 
     <ul>
       <li v-for="type in pokemon.types" :key="type.type.name" @click="$emit('select-type',type.type.name)" style="cursor: pointer">
@@ -37,7 +38,7 @@
     <h3>Abilities</h3>
     <ul>
       <li v-for="ability in pokemon.abilities" :key="ability.ability.name" @click="$emit('select-ability',ability.ability.name)" style="cursor: pointer">
-        {{ability.ability.name}}
+        <p id="nomTalent" class="nomtruc">{{ability.ability.name}}</p>
       </li>
     </ul>
 
@@ -49,6 +50,8 @@
       </li>
     </ul>
 
+  <!-- Simulateur Faiblesses/Résistances, ou boutton vers simulateur -->
+
     <br>
     <h3>Movepool</h3>
     <div class="grid">
@@ -57,11 +60,20 @@
       </div>
     </div>
 
+    <!-- Evolves into (PHoto avec propriété evolves into de l'api)-->
+
   </div>
   <div v-else>Chargement...</div>
 </template>
 
 <style scoped>
+
+#nomTalent {
+  border-style: solid;
+  margin-top: 5px;
+  border-radius: 30px;
+  background-color: white;
+}
 
 .list {
   color: black;
@@ -84,7 +96,7 @@
 .card {
   border-style: solid;
   text-transform: capitalize;
-  background-color: rgb(247, 198, 139);
+  background-color: white;
 }
 
 .grid {
@@ -116,6 +128,7 @@
   text-align: center;
   padding-left: 10px;
   padding-right: 10px;
+
 }
 
 h2 {

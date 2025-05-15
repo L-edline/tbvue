@@ -130,7 +130,7 @@
 .logo {
   width: 13%;
   display:inline-block;
-  padding-left: 35px;
+  padding-left: 15px;
 }
 
 .container {
@@ -142,7 +142,7 @@
 .card {
   border-style: solid;
   text-transform: capitalize;
-  background-color: rgb(247, 198, 139);
+  background-color: white;
 }
 
 .grid {

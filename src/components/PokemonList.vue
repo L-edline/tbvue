@@ -23,21 +23,25 @@
   <img src="@/assets/logo.png" alt="sprite" />
   <div>
     <RouterLink class="menu" to="/"> RETURN TO MENU </RouterLink>
+
+    <div class="grid">
+      <li
+        v-for="pokemon in filteredPokemons"
+        :key="pokemon.name"
+        @click="$emit('select-pokemon',pokemon.name)"
+        style="cursor: pointer"
+      >
+
+        <Photo :name="pokemon.name"></Photo>
+
+      </li>
+    </div>
+
   </div>
 
   <input class="input" type="text" v-model="input" placeholder="Search pokemons..." />
 
-  <div class="grid">
-    <li
-      v-for="pokemon in filteredPokemons"
-      :key="pokemon.name"
-      @click="$emit('select-pokemon',pokemon.name)"
-      style="cursor: pointer"
-    >
-      <Photo :name="pokemon.name"></Photo>
 
-    </li>
-  </div>
 </template>
 
 <style scoped>
@@ -65,10 +69,10 @@ img {
   margin-top: 15px;
 }
 .grid {
-display: grid;
-grid-template-columns: repeat(8,1fr);
-gap: 16px;
-padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 16px;
+  padding: 20px;
 }
 
 li {

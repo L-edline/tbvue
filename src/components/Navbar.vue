@@ -34,6 +34,7 @@
   h1 {
     color: black;
     border-style: solid;
+    border-radius: 10px;
     padding: 5px ;
     background-color: white;
     border-color: rgb(243, 87, 87);

@@ -15,8 +15,10 @@
 </script>
 
 <template>
-  <div v-if="pokemon">
-    <img :src="pokemon.sprites.front_default" alt="sprite" />
+  <div class="photo" v-if="pokemon">
+    <img class="flexitem" :src="pokemon.sprites.front_default" alt="sprite" />
+    <!-- Boutton pur rendre tout le monde shiny-->
+    <!-- Boutton pour afficher les sprites 3D avec other.showdown. -->
     <div class="nomtruc">{{ pokemon.name }}</div>
   </div>
   <div v-else>
@@ -27,7 +29,11 @@
 </template>
 
 <style>
+
   .loading {
     width: 40px;
   }
+
+
+
 </style>
