@@ -29,7 +29,7 @@
       <img class="type" :src="'/src/assets/types/'+  move.type.name  + '.png'" :alt="move.type.name"/>
     </div>
 
-    <div v-if="move.effect_entries.length === 0" class="description">{{ move.flavor_text_entries[0].effect }}</div>
+    <div v-if="move.effect_entries.length === 0" class="description">{{ move.flavor_text_entries[0].effect }} {{ move.flavor_text_entries[0].flavor_text }}</div>
     <div v-else class="description"> {{ move.effect_entries[0].effect }}</div>
 
     <div>
@@ -60,7 +60,7 @@
 
     <br>
     <h3>Learned By</h3>
-    <div class="grid">
+    <div class="flexgrid">
       <div class="card" v-for="pokemon in move.learned_by_pokemon" :key="pokemon.name" @click="$emit('select-pokemon',pokemon.name)" style="cursor: pointer">
         <Photo :name="pokemon.name"></Photo>
       </div>
@@ -105,6 +105,7 @@
   border-style: solid;
   text-transform: capitalize;
   background-color: rgb(247, 198, 139);
+  margin: 10px;
 }
 
 .grid {

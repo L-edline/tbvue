@@ -1,12 +1,14 @@
 <script setup>
   import {onMounted, ref, watchEffect} from 'vue'
   import { RouterLink } from 'vue-router'
+  import Species from './Species.vue'
 
   const {name} = defineProps({
     name: String
   })
 
   const pokemon = ref(null)
+  const species = ref(null)
 
   watchEffect(async () => {
     if (name) {
@@ -15,6 +17,7 @@
     }
   })
 
+console.log(pokemon.value)
 </script>
 
 <template>
@@ -25,6 +28,8 @@
 
     <img class="sprite" :src="pokemon.sprites.front_default" alt="sprite" />
     <!-- other.showdown. -->
+
+
 
     <ul>
       <li v-for="type in pokemon.types" :key="type.type.name" @click="$emit('select-type',type.type.name)" style="cursor: pointer">
@@ -59,6 +64,10 @@
         <p class="nomtruc" id="truc">{{ move.move.name }}</p>
       </div>
     </div>
+
+    <br>
+    <Species :name="pokemon.species.name" :pokemonname="pokemon.name"></Species>
+    <br>
 
     <!-- Evolves into (PHoto avec propriété evolves into de l'api)-->
 
@@ -117,6 +126,10 @@
 
 .sprite {
   width: 15%;
+  border-style: solid;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .card {

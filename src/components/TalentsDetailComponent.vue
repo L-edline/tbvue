@@ -31,7 +31,7 @@
     <div v-else class="description">{{ ability.effect_entries[1].effect }}</div>
 
     <h3>Pokemons</h3>
-    <div class="grid">
+    <div class="flexgrid">
       <div class="card" v-for="pokemon in ability.pokemon" :key="pokemon.pokemon.name" @click="$emit('select-pokemon',pokemon.pokemon.name)" style="cursor: pointer">
         <Photo :name="pokemon.pokemon.name"></Photo>
       </div>
@@ -67,6 +67,7 @@
   border-style: solid;
   text-transform: capitalize;
   background-color: rgb(247, 198, 139);
+  margin: 10px;
 }
 
 .grid {

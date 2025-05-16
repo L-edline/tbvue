@@ -84,7 +84,7 @@
 
     <br>
     <h3>Pokemons</h3>
-    <div class="grid">
+    <div class="flexgrid">
       <div class="pokemoncard" v-for="pokemon in type.pokemon" :key="pokemon.pokemon.name" @click="$emit('select-pokemon',pokemon.pokemon.name)" style="cursor: pointer">
         <Photo :name="pokemon.pokemon.name"></Photo>
       </div>
@@ -136,6 +136,7 @@
   border-style: solid;
   text-transform: capitalize;
   background-color: rgb(247, 198, 139);
+  margin: 10px;
 }
 
 .grid {

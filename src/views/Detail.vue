@@ -22,6 +22,7 @@
   const goToDetailMove = (name) => {
     router.push(`/move/${name}`)
   }
+
 </script>
 
 <template>

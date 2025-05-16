@@ -16,9 +16,9 @@
 
 <template>
   <div class="photo" v-if="pokemon">
-    <img class="flexitem" :src="pokemon.sprites.front_default" alt="sprite" />
+    <img id="spritepoke" class="flexitem" :src="pokemon.sprites.front_default" alt="sprite" />
     <!-- Boutton pur rendre tout le monde shiny-->
-    <!-- Boutton pour afficher les sprites 3D avec other.showdown. -->
+    <!-- Boutton pour afficher les sprites 3D avec other.showdown. SPRITE EN 3D EN REDUISANT LA TAILLE DES SPRITES PEUT ETRE -->
     <div class="nomtruc">{{ pokemon.name }}</div>
   </div>
   <div v-else>
@@ -30,8 +30,8 @@
 
 <style scoped>
 
-  .loading {
-    width: 40px;
+  .photo {
+    padding: 10px;
   }
 
 
