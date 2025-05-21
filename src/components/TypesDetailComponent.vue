@@ -1,6 +1,5 @@
 <script setup>
   import {onMounted, ref, watch, watchEffect} from 'vue'
-  import { RouterLink } from 'vue-router'
   import Photo from './Photo.vue'
 
   const props = defineProps({

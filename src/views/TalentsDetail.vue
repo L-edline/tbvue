@@ -12,7 +12,6 @@
 
   const goToDetail = (name) => {
     router.push(`/pokemon/${name}`)
-    console.log('goToDetail')
   }
 </script>
 
